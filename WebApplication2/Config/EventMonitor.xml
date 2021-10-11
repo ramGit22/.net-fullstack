@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ActiveCMSMonitor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <MonitorEvent xsi:type="FileSystemEvent" Name="">
-    <Folder>D</Folder>
+    <Folder>rasddd</Folder>
     <Filter>undefined</Filter>
     <Actions>
       <EventAction xsi:type="FileImportAction">
