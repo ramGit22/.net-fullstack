@@ -1,0 +1,1294 @@
+{
+  "ActiveCMSMonitor": {
+    "-xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "-xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+    "MonitorEvent": [
+      {
+        "id":1,
+        "-xsi:type": "FileSystemEvent",
+        "Folder": "C:\\import\\",
+        "Filter": "HR*.txt",
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "FileImportAction",
+            "Validate": "true",
+            "FileImporter": {
+              "-xsi:type": "CsvImporter",
+              "SupportEmail": "support@aventra.fi",
+              "SupportEmailCC": {
+                "-self-closing": "true"
+              },
+              "MailTemplate": "26",
+              "Separator": "$",
+              "#comment": " CSV separator char ",
+              "TargetEntity": "identity",
+              "Key": "upn",
+              "#comment1": "  Supported values are upn and personnelnbr  ",
+              "DeleteImported": "true",
+              "SkipNewEntity": {
+                "-ColumnName": "state",
+                "-Value": "23",
+                "-self-closing": "true"
+              },
+              "#comment2": "  skip new entity if value in <ColumnName> == <Value> Value is evaluated after possible ValueConverters ",
+              "DefaultValues": {
+                "DefaultValue": [
+                  {
+                    "-Name": "type",
+                    "-Value": "2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "wt_group",
+                    "-Value": "SALDO 40",
+                    "-FieldType": "Dynamic",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "wt_chart",
+                    "-Value": "6-19",
+                    "-FieldType": "Dynamic",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "lang",
+                    "-Value": "English",
+                    "-FieldType": "Dynamic",
+                    "-self-closing": "true"
+                  }
+                ]
+              },
+              "EntityReferences": {
+                "EntityReference": [
+                  {
+                    "-Entity": "company",
+                    "-Lookup": "company.nbr",
+                    "-ForeignKey": "company_id",
+                    "-References": "company.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "supervisor",
+                    "-Entity": "identity",
+                    "-Lookup": "identity.upn",
+                    "-ForeignKey": "supervisor_id",
+                    "-References": "identity.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "false",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "office1",
+                    "-Entity": "address",
+                    "-Lookup": "address.name",
+                    "-ForeignKey": "office",
+                    "-References": "address.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Name": "office2",
+                    "-Entity": "address",
+                    "-Lookup": "address.name",
+                    "-ForeignKey": "office2",
+                    "-References": "address.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Entity": "department",
+                    "-Lookup": "department.nbr",
+                    "-ForeignKey": "department_id",
+                    "-References": "department.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Entity": "costcenter",
+                    "-Lookup": "costcenter.nbr",
+                    "-ForeignKey": "cost_center_id",
+                    "-References": "costcenter.id",
+                    "-NotFound": "Add",
+                    "-UpdateOnChanged": "true",
+                    "-self-closing": "true"
+                  }
+                ]
+              },
+              "CsvColumns": {
+                "CsvColumn": [
+                  {
+                    "-Index": "0",
+                    "-Name": "upn",
+                    "-Mandatory": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "1",
+                    "-Name": "lastname",
+                    "-Mandatory": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "2",
+                    "-Name": "firstname",
+                    "-Mandatory": "true",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "3",
+                    "-Name": "known_as",
+                    "-Mandatory": "false",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "4",
+                    "-Name": "socialnbr",
+                    "-Mandatory": "false",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "5",
+                    "-Name": "personnelnbr",
+                    "-Mandatory": "false",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "6",
+                    "-Name": "assignment",
+                    "-Mandatory": "false",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "7",
+                    "-Name": "company.nbr",
+                    "-NullValue": "00000000",
+                    "-Mandatory": "true",
+                    "-EntityReference": "company",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "8",
+                    "-Name": "company.name",
+                    "-Mandatory": "false",
+                    "-EntityReference": "company",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "9",
+                    "-Name": "department.nbr",
+                    "-NullValue": "00000000",
+                    "-Mandatory": "false",
+                    "-EntityReference": "department",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": "  organisation unit  "
+                    }
+                  },
+                  {
+                    "-Index": "10",
+                    "-Name": "department.name",
+                    "-Mandatory": "false",
+                    "-EntityReference": "department",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "11",
+                    "-Name": "costcenter.nbr",
+                    "-NullValue": "00000",
+                    "-Mandatory": "false",
+                    "-EntityReference": "costcenter",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": "  palkanlaskennan department  "
+                    }
+                  },
+                  {
+                    "-Index": "12",
+                    "-Name": "costcenter.name",
+                    "-Mandatory": "false",
+                    "-EntityReference": "costcenter",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": " \t\t<CsvColumn Index=\"13\" Name=\"process field\" Mandatory=\"false\" />\t\t "
+                    }
+                  },
+                  {
+                    "#item": {
+                      "#comment3": " \t\t<CsvColumn Index=\"14\" Name=\"process\" Mandatory=\"false\" />\t\t "
+                    }
+                  },
+                  {
+                    "-Index": "15",
+                    "-Name": "identity.upn",
+                    "-Mandatory": "false",
+                    "-EntityReference": "supervisor",
+                    "-NullValue": "\"/",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": "  supervisor  "
+                    }
+                  },
+                  {
+                    "-Index": "16",
+                    "-Name": "state",
+                    "-Mandatory": "false",
+                    "ValueConverters": {
+                      "ValueConverter": [
+                        {
+                          "-Source": "0",
+                          "-Target": "23",
+                          "-self-closing": "true"
+                        },
+                        {
+                          "-Source": "1",
+                          "-Target": "44",
+                          "-self-closing": "true"
+                        },
+                        {
+                          "-Source": "",
+                          "-Target": "18",
+                          "-self-closing": "true"
+                        },
+                        {
+                          "-Source": "2",
+                          "-Target": "21",
+                          "-self-closing": "true"
+                        },
+                        {
+                          "-Source": "3",
+                          "-Target": "21",
+                          "-self-closing": "true"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "-Index": "17",
+                    "-Name": "valid_from",
+                    "-Mandatory": "false",
+                    "-NullValue": "00000000",
+                    "-ValueType": "DateTime",
+                    "-ValueFormat": "yyyyMMdd",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "18",
+                    "-Name": "valid_to",
+                    "-Mandatory": "false",
+                    "-NullValue": "00000000",
+                    "-ValueType": "DateTime",
+                    "-ValueFormat": "yyyyMMdd",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": " \t\t<CsvColumn Index=\"19\" Name=\"type\" Mandatory=\"false\" />\t\t "
+                    }
+                  },
+                  {
+                    "-Index": "20",
+                    "-Name": "address.name",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office1",
+                    "-NullValue": "\"/",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": " site "
+                    }
+                  },
+                  {
+                    "-Index": "21",
+                    "-Name": "address.addr1",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office1",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "22",
+                    "-Name": "address.addr2",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office1",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "23",
+                    "-Name": "address.addr3",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office1",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "#item": {
+                      "#comment": "  <CsvColumn Index=\"23\" Name=\"lunch_group\" Mandatory=\"false\" FieldType=\"Dynamic\" />  "
+                    }
+                  },
+                  {
+                    "#item": {
+                      "#comment4": " \t\t<CsvColumn Index=\"24\" Name=\"type\" Mandatory=\"false\" /> \t\t "
+                    }
+                  },
+                  {
+                    "-Index": "25",
+                    "-Name": "address.name",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office2",
+                    "-NullValue": "\"/",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "26",
+                    "-Name": "address.addr1",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "27",
+                    "-Name": "address.addr2",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "28",
+                    "-Name": "address.addr3",
+                    "-Mandatory": "false",
+                    "-EntityReference": "office2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "29",
+                    "-Name": "email",
+                    "-Mandatory": "false",
+                    "-self-closing": "true"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "FileSystemEvent",
+        "id":2,
+        "-Name": "Fixed line length file import",
+        "Folder": "C:\\test",
+        "Filter": "*.txt",
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "FileImportAction",
+            "Validate": "false",
+            "FileImporter": {
+              "-xsi:type": "TextImporter",
+              "#comment": "  Separator empty = fixed length  ",
+              "Separator": {
+                "-self-closing": "true"
+              },
+              "SupportEmail": {
+                "-self-closing": "true"
+              },
+              "SupportEmailCC": {
+                "-self-closing": "true"
+              },
+              "MailTemplate": "0",
+              "TargetEntity": "identity",
+              "Key": "personnel_nbr",
+              "DeleteImported": "false",
+              "InsertNew": "false",
+              "#comment5": "  fixed line length  ",
+              "LineLength": "174",
+              "#comment6": "  Example lines in .txt file ",
+              "#comment7": " 0005022492    20180501 ANKA                      KALLE             GLOBAL STUFF                           ANKGATAN 311           411 27   ANKEBORG      +358503473601 20030818 ",
+              "#comment8": " 0005022491    20180401 MOUSE                     MICKEY            DISNEY STUFF                           MUSVAGEN 10            421 27   ANKEBORG      +358503473600 20020816 ",
+              "#comment9": "  column indexes must be sequential 0...n    No gaps or the array will be out of bounds ",
+              "CsvColumns": {
+                "CsvColumn": [
+                  {
+                    "-Index": "0",
+                    "-Name": "personnelnbr",
+                    "-Mandatory": "true",
+                    "-Offset": "0",
+                    "-FieldLength": "14",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "1",
+                    "-Name": "valid_to",
+                    "-Mandatory": "true",
+                    "-Offset": "14",
+                    "-FieldLength": "8",
+                    "-ValueType": "DateTime",
+                    "-ValueFormat": "yyyyMMdd",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "2",
+                    "-Name": "lastname",
+                    "-Mandatory": "true",
+                    "-Offset": "23",
+                    "-FieldLength": "26",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "3",
+                    "-Name": "firstname",
+                    "-Mandatory": "true",
+                    "-Offset": "49",
+                    "-FieldLength": "18",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "4",
+                    "-Name": "department",
+                    "-Mandatory": "true",
+                    "-Offset": "67",
+                    "-FieldLength": "39",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "5",
+                    "-Name": "address1",
+                    "-Mandatory": "true",
+                    "-Offset": "106",
+                    "-FieldLength": "23",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "6",
+                    "-Name": "address2",
+                    "-Mandatory": "true",
+                    "-Offset": "129",
+                    "-FieldLength": "9",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "7",
+                    "-Name": "address3",
+                    "-Mandatory": "true",
+                    "-Offset": "138",
+                    "-FieldLength": "14",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "8",
+                    "-Name": "phone",
+                    "-Mandatory": "true",
+                    "-Offset": "152",
+                    "-FieldLength": "14",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Index": "9",
+                    "-Name": "valid_from",
+                    "-Mandatory": "true",
+                    "-Offset": "166",
+                    "-FieldLength": "8",
+                    "-ValueType": "DateTime",
+                    "-ValueFormat": "yyyyMMdd",
+                    "-self-closing": "true"
+                  }
+                ]
+              },
+              "Actions": {
+                "EventAction": {
+                  "-xsi:type": "EntityImport",
+                  "SupportEmail": "support@aventra.fi",
+                  "SupportEmailCC": {
+                    "-self-closing": "true"
+                  },
+                  "MailTemplate": "27",
+                  "Key": "personnelnbr",
+                  "InsertNew": "true",
+                  "UpdateExisting": "true",
+                  "ForceUpdateExisting": "false"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "id":3,
+        "-ExecuteIntervalSeconds": "10",
+        "-DelayStartSeconds": "10",
+        "-Name": "Card Xml Export",
+        "Query": {
+          "#cdata-section": " SELECT id, lastname, firstname, valid_to, state FROM card_state WHERE state_name='Active' ORDER BY id; "
+        },
+        "UpdateCommand": {
+          "-self-closing": "true"
+        },
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "XmlExporter",
+            "-MaxRecordsPerFile": "10",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "26",
+            "Folder": "C:\\export",
+            "TopLevelElement": "cards",
+            "ElementName": "card",
+            "FileEncoding": "UTF-8",
+            "#comment": " defaults to UTF-8 ",
+            "FileNamePrefix": "acms_exp_",
+            "FileNameDateFormat": "yyyy-MM-dd_HH-mm-ss",
+            "FileNamePostfix": ".xml",
+            "XmlElements": {
+              "XmlElement": [
+                {
+                  "-Type": "Attribute",
+                  "-Name": "id",
+                  "-ValueField": "id",
+                  "-ValueFormat": "\"/",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Type": "Element",
+                  "-Name": "valid_to",
+                  "-ValueField": "valid_until",
+                  "-ValueFormat": "yyyy-MM-dd",
+                  "-NullValue": "00000000",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Type": "Element",
+                  "-Name": "lastname",
+                  "-ValueField": "lastname",
+                  "-ValueFormat": "\"/",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Type": "Element",
+                  "-Name": "firstname",
+                  "-ValueField": "firstname",
+                  "-ValueFormat": "\"/",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Type": "Element",
+                  "-Name": "state",
+                  "-ValueField": "state",
+                  "-ValueFormat": "",
+                  "ValueConverters": {
+                    "ValueConverter": [
+                      {
+                        "-Source": "0",
+                        "-Target": "23",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "1",
+                        "-Target": "44",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "2",
+                        "-Target": "21",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "3",
+                        "-Target": "21",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "4",
+                        "-Target": "18",
+                        "-self-closing": "true"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "id":4,
+        "-ExecuteIntervalSeconds": "10",
+        "-DelayStartSeconds": "30",
+        "-Name": "Change state",
+        "Query": {
+          "#cdata-section": " SELECT i.* from \"identity\" i WHERE i.state = 23 AND i.updated <= DATEADD(MONTH, -3, GetDate()); "
+        },
+        "UpdateCommand": {
+          "-self-closing": "true"
+        },
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "EntityChangeState",
+            "-Entity": "identity",
+            "-TargetStateID": "136",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "27",
+            "Comment": {
+              "-self-closing": "true"
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "-ExecuteIntervalSeconds": "2",
+        "-Name": "Send outbound messages using WebServiceCall",
+        "-Enabled": "false",
+        "Query": {
+          "#cdata-section": " SELECT * FROM outbound_msg WHERE status=0 AND type = 0 ORDER BY type, target, id; SELECT MAX(send_batch) as send_batch FROM outbound_msg; "
+        },
+        "UpdateCommand": "UPDATE outbound_msg SET status=@status, send_time=@send_time, send_count=@send_count, send_batch=@send_batch, error_msg=@error_msg, error_code=@error_code WHERE id=@id;",
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "WebServiceCall",
+            "-MaxRecordsOnce": "1",
+            "-DelayBetweenMessages": "0",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "27",
+            "URL": "https://localhost/ACMSIntegrator.asmx",
+            "Username": "username",
+            "Password": "xx",
+            "XmlEnvelope": [
+              {
+                "-Type": "0",
+                "-InsertPosition": "/tns:activecms_out_access_msg",
+                "#cdata-section": " <tns:activecms_out_access_msg version=\"2\" xmlns:tns=\"fi:aventra:schema:activecms\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"> </tns:activecms_out_access_msg> "
+              },
+              {
+                "-Type": "1",
+                "-InsertPosition": "/tns:activecms_out_house_services_msg",
+                "#cdata-section": " <tns:activecms_out_house_services_msg version=\"2\" xmlns:tns=\"fi:aventra:schema:activecms\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"> </tns:activecms_out_house_services_msg> "
+              }
+            ],
+            "FieldMappings": {
+              "Mapping": {
+                "-TargetField": "timeplan_group",
+                "-SourceEntity": "None",
+                "ValueConverters": {
+                  "ValueConverter": [
+                    {
+                      "-Source": "Value 1",
+                      "-Target": "1",
+                      "-self-closing": "true"
+                    },
+                    {
+                      "-Source": "Value ABC",
+                      "-Target": "2",
+                      "-self-closing": "true"
+                    },
+                    {
+                      "-Source": "Some third value",
+                      "-Target": "7",
+                      "-self-closing": "true"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "#item": {
+          "#comment": "  HttpEvent is used to get data at timed intervals using HTTP GET  "
+        }
+      },
+      {
+        "-xsi:type": "HttpEvent",
+        "-ExecuteIntervalSeconds": "86400",
+        "-DelayStartSeconds": "10",
+        "-ExecuteAt": "05:00",
+        "-Name": "KIMKAT Import",
+        "SupportEmail": "support@aventra.fi",
+        "SupportEmailCC": {
+          "-self-closing": "true"
+        },
+        "MailTemplate": "4",
+        "URL": "http://localhost:8080/personws/*.xml",
+        "Username": {
+          "-self-closing": "true"
+        },
+        "Password": {
+          "-self-closing": "true"
+        },
+        "HttpMethod": "GET",
+        "ExpectedHttpStatus": "200",
+        "DataType": "XML",
+        "RootElement": {
+          "-self-closing": "true"
+        },
+        "ItemElement": "person",
+        "Key": "upn",
+        "EntityReferences": {
+          "EntityReference": {
+            "-Name": "office1",
+            "-Entity": "address",
+            "-Lookup": "address.name",
+            "-ForeignKey": "office1",
+            "-References": "address.id",
+            "-NotFound": "Add",
+            "-UpdateOnChanged": "false",
+            "-self-closing": "true"
+          },
+          "#comment": " <EntityReference Entity=\"costcenter\" Lookup=\"costcenter.nbr\" ForeignKey=\"cost_center_id\" References=\"costcenter.id\" NotFound=\"Add\" UpdateOnChanged=\"false\"/> ",
+          "#comment10": " <EntityReference Name=\"department1\" Entity=\"department\" Lookup=\"department.nbr\" ForeignKey=\"department_id\" References=\"department.id\" NotFound=\"Add\" UpdateOnChanged=\"true\"/ "
+        },
+        "Properties": {
+          "HttpProperty": [
+            {
+              "-Name": "state",
+              "-ConstantValue": "21",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "socialnbr",
+              "-Path": "identifier",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "upn",
+              "-Path": "uid",
+              "-Postfix": "@ki.se",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "firstname",
+              "-Path": "firstname",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "known_as",
+              "-Path": "firstname",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "lastname",
+              "-Path": "lastname",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "email",
+              "-Path": "mail",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "valid_from",
+              "-Path": "fromdate",
+              "-ValueType": "DateTime",
+              "-ValueFormat": "yyyy-MM-dd",
+              "-NullValue": "\"/",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "valid_to",
+              "-Path": "todate",
+              "-ValueType": "DateTime",
+              "-ValueFormat": "yyyy-MM-dd",
+              "-NullValue": "\"/",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "organisation",
+              "-Path": "institution",
+              "-AltPath": "edupersonaffiliation",
+              "ValueConverters": {
+                "ValueConverter": [
+                  {
+                    "-Source": "student",
+                    "-Target": "Student",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Source": "employee",
+                    "-Target": "\"/",
+                    "-self-closing": "true"
+                  }
+                ]
+              }
+            },
+            {
+              "-Name": "department",
+              "-Path": "department",
+              "-NullValue": "\"/",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "assignment",
+              "-Path": "division",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "address.name",
+              "-EntityReference": "office1",
+              "-NullValue": "",
+              "-Path": "programmes.program",
+              "-Substring": "0,3",
+              "-Mandatory": "false",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "address.description",
+              "-EntityReference": "office1",
+              "-NullValue": "",
+              "-Path": "programmes.program",
+              "-Substring": "0,5",
+              "-Mandatory": "false",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "company_rep1",
+              "-NullValue": "",
+              "-Path": "programmes.program",
+              "-Mandatory": "false",
+              "-self-closing": "true"
+            },
+            {
+              "-Name": "type",
+              "-Path": "edupersonaffiliation",
+              "ValueConverters": {
+                "ValueConverter": [
+                  {
+                    "-Source": "",
+                    "-Target": "2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Source": "employee",
+                    "-Target": "2",
+                    "-self-closing": "true"
+                  },
+                  {
+                    "-Source": "student",
+                    "-Target": "4",
+                    "-self-closing": "true"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "EntityImport",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "3",
+            "TargetEntity": "identity",
+            "Key": "upn",
+            "InsertNew": "true",
+            "UpdateExisting": "true"
+          }
+        }
+      },
+      {
+        "-xsi:type": "FileSystemMaintenanceEvent",
+        "-ExecuteIntervalSeconds": "86400",
+        "-ExecuteAt": "01:00",
+        "-Name": "clean folder maintenance",
+        "-Enabled": "true",
+        "Debug": "false",
+        "Actions": {
+          "EventAction": [
+            {
+              "-xsi:type": "FolderCleaner",
+              "Folder": "C:\\acms\\log\\Monitor",
+              "Filter": "*.*",
+              "#comment": "  age limit is in seconds. 1h = 3600. 24h = 86400. 7d = 604800 ",
+              "AgeLimit": "86400",
+              "#comment11": " if path empty then delete files ",
+              "ArchivePath": "C:\\acms\\log\\Monitor\\Archive"
+            },
+            {
+              "#item": {
+                "#comment": "  DELETE FILES FROM ARCHIVE OLDER THAN WEEK "
+              }
+            },
+            {
+              "-xsi:type": "FolderCleaner",
+              "Folder": "C:\\acms\\log\\Monitor\\Archive",
+              "Filter": "*.*",
+              "#comment": "  age limit is in seconds. 1h = 3600. 24h = 86400. 7d = 604800 ",
+              "AgeLimit": "604800",
+              "#comment12": " if path empty then delete files ",
+              "ArchivePath": {
+                "-self-closing": "true"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "-ExecuteIntervalSeconds": "1",
+        "-Name": "Outbound messages using REST",
+        "-Enabled": "true",
+        "Query": {
+          "#cdata-section": " SELECT o.*, x.new_send_batch FROM outbound_msg o, (select max(send_batch)+1 as new_send_batch from outbound_msg o where o.type = 0) x WHERE o.status=0 AND o.type = 0 and o.target <> '' and o.target is not null ORDER BY o.type, o.target, o.id; "
+        },
+        "UpdateCommand": "UPDATE outbound_msg SET status=@status, send_time=@send_time, send_count=@send_count, send_batch=@new_send_batch, error_msg=@error_msg, error_code=@error_code WHERE id=@id;",
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "RESTRequestAction",
+            "-MaxRecordsPerFile": "1",
+            "SupportEmail": {
+              "-self-closing": "true"
+            },
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "27",
+            "ServerUrl": "http://localhosts/api/integration",
+            "Method": "POST",
+            "DataType": "XML",
+            "ContentType": "text/xml",
+            "ExpectedHttpStatus": "200",
+            "RootElement": "activecms_out_access_msg",
+            "RootElementAttribute": {
+              "-self-closing": "true"
+            },
+            "ItemElement": {
+              "-self-closing": "true"
+            },
+            "Username": {
+              "-self-closing": "true"
+            },
+            "Password": {
+              "-self-closing": "true"
+            },
+            "Mappings": {
+              "Mapping": [
+                {
+                  "-Name": "msg",
+                  "-Path": "",
+                  "-ValueField": "msg",
+                  "-Type": "XmlValue",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "target",
+                  "-Path": "target",
+                  "-ValueField": "target",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "id",
+                  "-Path": "messageid",
+                  "-ValueField": "new_send_batch",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "-ExecuteIntervalSeconds": "2",
+        "-DelayStartSeconds": "10",
+        "-Name": "",
+        "Query": {
+          "#cdata-section": " SELECT 'CP' + req.id AS 'external_id', req.type AS TYPE, req.state AS 'status', req.info, i.unid, i.lastname, i.firstname, i.email, i.phone, i.assignment, c.name AS 'company.name', c.nbr AS 'company.nbr', c.nbr_type AS 'company.nbr_type', a.id AS 'area.nbr', a.name, ea.valid_from, ea.valid_to #, req.comment FROM kv_request req JOIN identity i ON i.id = req.entity_id JOIN identity_employer ie ON ie.identity_id = i.id JOIN company c ON c.id = ie.company_id JOIN kv_entity_area ea ON ea.request_id = req.id JOIN kv_area a ON a.id = ea.area_id WHERE req.state = 38; "
+        },
+        "UpdateCommand": {
+          "-self-closing": "true"
+        },
+        "Actions": {
+          "EventAction": {
+            "-xsi:type": "RESTRequestAction",
+            "-MaxRecordsPerFile": "10",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "27",
+            "ServerUrl": "http://localhost/webapi/api/xml",
+            "Method": "POST",
+            "DataType": "XML",
+            "ContentType": "text/xml",
+            "ExpectedHttpStatus": "201",
+            "RootElement": "records",
+            "RootElementAttribute": "kv_request",
+            "ItemElement": "request",
+            "GroupByField": "external_id",
+            "Username": {
+              "-self-closing": "true"
+            },
+            "Password": {
+              "-self-closing": "true"
+            },
+            "Mappings": {
+              "Mapping": [
+                {
+                  "-Name": "identity.tax_number",
+                  "-Path": "identity.tax_number",
+                  "-ValueField": "unid",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "identity.lastname",
+                  "-Path": "identity.lastname",
+                  "-ValueField": "lastname",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "identity.firstname",
+                  "-Path": "identity.firstname",
+                  "-ValueField": "firstname",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "identity.phone",
+                  "-Path": "identity.phone",
+                  "-ValueField": "phone",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "identity.email",
+                  "-Path": "identity.email",
+                  "-ValueField": "email",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "identity.assignment",
+                  "-Path": "identity.assignment",
+                  "-ValueField": "assignment",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "company.name",
+                  "-Path": "company.name",
+                  "-ValueField": "company.name",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "company.nbr",
+                  "-Path": "company.nbr",
+                  "-ValueField": "company.nbr",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "company.nbr_type",
+                  "-Path": "company.nbr_type",
+                  "-ValueField": "company.nbr_type",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "external_id",
+                  "-Path": "external_id",
+                  "-ValueField": "external_id",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "type",
+                  "-Path": "type",
+                  "-ValueField": "type",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "info",
+                  "-Path": "info",
+                  "-ValueField": "info",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "valid_from",
+                  "-Path": "valid_from",
+                  "-ValueField": "valid_from",
+                  "-Type": "Attribute",
+                  "-ValueType": "DateTime",
+                  "-ValueFormat": "{0:yyyy-MM-ddTHH:mm:ss}",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "valid_to",
+                  "-Path": "valid_to",
+                  "-ValueField": "valid_to",
+                  "-Type": "Attribute",
+                  "-ValueType": "DateTime",
+                  "-ValueFormat": "{0:yyyy-MM-ddTHH:mm:ss}",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "state",
+                  "-Path": "status",
+                  "-ValueField": "status",
+                  "-Type": "Attribute",
+                  "ValueConverters": {
+                    "ValueConverter": [
+                      {
+                        "-Source": "ACCEPTED",
+                        "-Target": "42",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "REJECTED",
+                        "-Target": "65",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Source": "OPEN",
+                        "-Target": "38",
+                        "-Default": "true",
+                        "-self-closing": "true"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "-Name": "kv_entity_area",
+                  "-Path": "accessLevels",
+                  "-ValueField": "area.nbr",
+                  "Properties": {
+                    "#comment": "  sub property  ",
+                    "Property": [
+                      {
+                        "-Name": "kv_entity_area.nbr",
+                        "-ValueField": "area.nbr",
+                        "-Path": "access",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Name": "kv_entity_area.valid_from",
+                        "-ValueField": "valid_from",
+                        "-Path": "access.from",
+                        "-Type": "Attribute",
+                        "-ValueType": "DateTime",
+                        "-ValueFormat": "{0:yyyy-MM-ddTHH:mm:ss}",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Name": "kv_entity_area.valid_to",
+                        "-ValueField": "valid_to",
+                        "-Path": "access.to",
+                        "-Type": "Attribute",
+                        "-ValueType": "DateTime",
+                        "-ValueFormat": "{0:yyyy-MM-ddTHH:mm:ss}",
+                        "-self-closing": "true"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "-Name": "kv_entity_area.count",
+                  "-Path": "accessLevels.count",
+                  "-ConstantValue": "2",
+                  "-Type": "Attribute",
+                  "-self-closing": "true"
+                },
+                {
+                  "-Name": "employer",
+                  "-Path": "employers",
+                  "-ValueField": "company.nbr",
+                  "Properties": {
+                    "Property": [
+                      {
+                        "-Name": "company.nbr",
+                        "-ValueField": "company.nbr",
+                        "-Path": "company",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Name": "company.name",
+                        "-ValueField": "company.name",
+                        "-Path": "company.name",
+                        "-Type": "Attribute",
+                        "-self-closing": "true"
+                      },
+                      {
+                        "-Name": "company.nbr_type",
+                        "-ValueField": "company.nbr_type",
+                        "-Path": "company.nbr_type",
+                        "-Type": "Attribute",
+                        "-self-closing": "true"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "-xsi:type": "DatabaseEvent",
+        "-ExecuteIntervalSeconds": "172800",
+        "-ExecuteAt": "03:00",
+        "-Name": "GDPR_Cleanup",
+        "Query": {
+          "#cdata-section": " DECLARE @datelimit AS datetime2 SET @datelimit = DATEADD(year, -2, GETDATE()) SELECT DISTINCT top 100 i.id, s.name, i.created, i.updated, i.statechanged, i.valid_to FROM \"identity\" i JOIN state s ON s.id = i.state WHERE s.name = 'Removed' AND i.statechanged < @datelimit ORDER BY i.statechanged; "
+        },
+        "UpdateCommand": {
+          "-self-closing": "true"
+        },
+        "Actions": {
+          "#comment": " Execute a specific Business Logic operation ",
+          "EventAction": {
+            "-xsi:type": "ExecuteOperation",
+            "-OperationID": "4060",
+            "-EntityType": "identity",
+            "-UseSingleTransaction": "false",
+            "SupportEmail": "support@aventra.fi",
+            "SupportEmailCC": {
+              "-self-closing": "true"
+            },
+            "MailTemplate": "27",
+            "Comment": "SYSTEM: GDPR identity cleanup"
+          }
+        }
+      },
+      {
+        "#item": {
+          "#comment": "  Send outbound emails  "
+        }
+      },
+      {
+        "-xsi:type": "OutboundEmailEvent",
+        "-ExecuteIntervalSeconds": "60",
+        "-DelayStartSeconds": "1",
+        "-Name": "Outbound email",
+        "-self-closing": "true"
+      }
+    ]
+  },
+  "#omit-xml-declaration": "yes"
+}

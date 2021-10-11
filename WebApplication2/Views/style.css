@@ -1,0 +1,33 @@
+
+.main-content{
+
+    width: 1024px;
+    margin: auto;
+    text-align: center;
+    margin-top:50px;
+}
+
+.top-nav{
+    display:flex;
+    justify-content: space-between;
+}
+
+.event-card{
+    max-width: 500px;
+    padding:20px;
+    border:1px solid grey;
+    text-align: left;
+}
+.event-card p{
+    font-size:20px;
+    font-weight: 600;
+}
+.event-card p span{
+    font-weight: normal;
+    margin-left:20px;
+}
+.event-card__action{
+    margin-top:40px;
+    border-top:1px solid grey;
+    padding-top:20px;
+}

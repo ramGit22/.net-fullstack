@@ -1,0 +1,243 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main-content" id="app">
+      <!-- Top menu and button -->
+      <div class="top-nav">
+       <div class="view-all">All actions</div>
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">
+        Add new event
+       </button>
+      </div>
+
+      <!-- Data render--> 
+      <div id="event-data">
+
+       
+
+      </div>
+
+
+      
+      <!-- add new event modal -->
+
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEventModalLabel">Add event </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form style="margin: 150px">
+          <div class="form-group row">
+            <label for="ME1" class="col-4 col-form-label">Monitor Event</label>
+            <div class="col-8">
+              <select id="ME1" name="ME1" class="custom-select">
+                <option value="FileSystemEvent">File System Event</option>
+                <option value="DatabaseEvent">Database Event</option>
+                <option value="HttpEvent">HttpEvent</option>
+                <option value="FileSystemMaintenanceEvent">
+                  File System Maintenance Event
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="F1" class="col-4 col-form-label">Folder</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="F1" name="F1" type="text" class="form-control" />
+                <div class="input-group-append">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="Fil1" class="col-4 col-form-label">Filter</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="Fil1" name="Fil1" type="text" class="form-control" />
+                <div class="input-group-append">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="action-type" class="col-4 col-form-label">Choose Action Type</label>
+            <div class="col-8">
+              <select id="action-type" name="action-type" class="custom-select">
+                <option value="FileImportAction">FileImportAction</option>
+                <option value="XmlExporter">XmlExporter</option>
+                <option value="EntityChangeState">EntityChangeState</option>
+                <option value="">WebServiceCall</option>
+                <option value="">EntityImport</option>
+                <option value="">FolderCleaner</option>
+                <option value="">RestRequestAction</option>
+                <option value="">ExecutionOperation</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-4">Validate</label>
+            <div class="col-8">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  name="val1"
+                  id="val1_0"
+                  type="checkbox"
+                  class="custom-control-input"
+                  value="validate"
+                />
+                <label for="val1_0" class="custom-control-label"></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="SE1" class="col-4 col-form-label">Support Email</label>
+            <div class="col-8">
+              <input id="SE1" name="SE1" type="text" class="form-control" />
+            </div>
+          </div>
+         
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" id="save-event-button" class="btn btn-primary">Save Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      <!-- <form style="margin: 150px">
+        <div class="form-group row">
+          <label for="ME1" class="col-4 col-form-label">Monitor Event</label>
+          <div class="col-8">
+            <select id="ME1" name="ME1" class="custom-select">
+              <option value="FileSystemEvent">FileSystemEvent</option>
+              <option value="Database Event">Database Event</option>
+              <option value="HttpEvent">HttpEvent</option>
+              <option value="FileSystemMaintenanceEvent">
+                FileSystemMaintenanceEvent
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="F1" class="col-4 col-form-label">Folder</label>
+          <div class="col-8">
+            <div class="input-group">
+              <input id="F1" name="F1" type="text" class="form-control" />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="fa fa-upload"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Fil1" class="col-4 col-form-label">Filter</label>
+          <div class="col-8">
+            <div class="input-group">
+              <input id="Fil1" name="Fil1" type="text" class="form-control" />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="fa fa-filter"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="3" class="col-4 col-form-label">Choose Action Type</label>
+          <div class="col-8">
+            <select id="3" name="3" class="custom-select">
+              <option value="rabbit">FileImportAction</option>
+              <option value="duck">XmlExporter</option>
+              <option value="fish">EntityChangeState</option>
+              <option value="">WebServiceCall</option>
+              <option value="">EntityImport</option>
+              <option value="">FolderCleaner</option>
+              <option value="">RestRequestAction</option>
+              <option value="">ExecutionOperation</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Validate</label>
+          <div class="col-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                name="val1"
+                id="val1_0"
+                type="radio"
+                class="custom-control-input"
+                value=""
+              />
+              <label for="val1_0" class="custom-control-label"></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="SE1" class="col-4 col-form-label">Support Email</label>
+          <div class="col-8">
+            <input id="SE1" name="SE1" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="SEC1" class="col-4 col-form-label">Support EmailCC</label>
+          <div class="col-8">
+            <input id="SEC1" name="SEC1" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="mt1" class="col-4 col-form-label">Mail Template</label>
+          <div class="col-8">
+            <input id="mt1" name="mt1" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="s1" class="col-4 col-form-label">Separator</label>
+          <div class="col-8">
+            <input id="s1" name="s1" type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">
+              Save
+            </button>
+          </div>
+        </div>
+      </form> -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <script src="app.js"></script>
+
+  </body>
+</html>
